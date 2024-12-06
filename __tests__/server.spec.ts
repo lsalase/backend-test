@@ -34,15 +34,45 @@ describe("Bateria de test de servidor", () => {
             .then(response => {
                 expect(response.text).toBe("El rut suministrado (553500-K) es : valido");
             });
-
+    });
+    test("Servidor en endpoint /validar-rut?rut=numero-rut", async () => {
         return await request(app)
             .get('/validar-rut?rut=1')
             .expect(200)
             .expect("Content-Type", /text/)
             .then(response => {
-                expect(response.text).toBe("El rut suministrado (1) es : invalallido");
+                expect(response.text).toBe("El rut suministrado (1) es : invalido");
             });
     });
+    test("Servidor en endpoint /validar-rut?rut=numero-rut", async () => {
+        return await request(app)
+            .get('/validar-rut?rut=13870610-9')
+            .expect(200)
+            .expect("Content-Type", /text/)
+            .then(response => {
+                expect(response.text).toBe("El rut suministrado (13870610-9) es : valido");
+            });
+    });
+    test("Servidor en endpoint /validar-rut?rut=numero-rut", async () => {
+        return await request(app)
+            .get('/validar-rut?rut=texto')
+            .expect(200)
+            .expect("Content-Type", /text/)
+            .then(response => {
+                expect(response.text).toBe("El rut suministrado (texto) es : invalido");
+            });
+    });
+    test("Servidor en endpoint /validar-rut?rut=numero-rut", async () => {
+        return await request(app)
+            .get('/validar-rut?rut=3436518-0')
+            .expect(200)
+            .expect("Content-Type", /text/)
+            .then(response => {
+                expect(response.text).toBe("El rut suministrado (3436518-0) es : valido");
+            });
+    });
+    
+
 
     test("Servidor en endpoint /buscar-subcadena?cadena=string&subcadena=substring", async () => {
 
