@@ -10,9 +10,14 @@ pipeline{
                 }
             }
             stages{
-                stage("otro"){
+                stage("build - instalacion dependencia"){
                     steps{
                         sh 'npm install'
+                    }
+                }
+                stage("build - ejecucion de test"){
+                    steps{
+                        sh 'npm run build'
                     }
                 }
                 stage("build - build del proyecto"){
