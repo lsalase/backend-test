@@ -1,5 +1,8 @@
 pipeline{
     agent any
+    environment{
+        USERNAME = "lsalas"
+    }
     stages{
         stage("build - gral"){
             agent{
